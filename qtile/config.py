@@ -53,7 +53,7 @@ keys = [
              desc='Launches wificon'
              ),
         Key([mod], "s",
-             lazy.spawn("ss"),
+             lazy.spawn("screenshooter"),
              desc='Launches screenshooter'
              ),
         Key([mod], "r",
@@ -472,19 +472,19 @@ def init_widgets_list():
                        ),
               widget.GroupBox(
                        font = "Fira Code Bold",
-                       fontsize = 9, 
+                       fontsize = 9,
                        margin_y = 4,
                        margin_x = 0,
                        padding_y = 5,
                        padding_x = 3,
                        borderwidth = 3,
-                       active = colors[2],
-                       inactive = colors[3],
+                       active = "#00ff00",
+                       inactive = "#ffffff",
                        rounded = False,
                        disable_drag=True,
-                       highlight_color = "#00ff6700",#colors[4],
+                       highlight_color = "#00ff0000",#colors[4],
                        highlight_method = "line",
-                       this_current_screen_border = colors[6][0],
+                       this_current_screen_border = colors[6][0], 
                        this_screen_border = colors [4],
                        other_current_screen_border = colors[6][0],
                        other_screen_border = colors[4],
@@ -526,7 +526,8 @@ def init_widgets_list():
                       margin_y = 3
                     #   mouse_callbacks = {'Button1': lambda: qtile.cmd_spawn(myTerm)},
                      ),
-             widget.Net(
+             widget.NetGraph(
+                       type = 'line',
                        interface = "eno1",
                        format = '{down} ↓↑ {up}',
                       foreground = theme("#000000"),
@@ -602,7 +603,8 @@ def init_widgets_list():
                       #mouse_callbacks = {'Button1': lambda: qtile.cmd_spawn(myTerm)},
                      ),
               widget.CapsNumLockIndicator(
-                      foreground = theme("#000000")
+                      foreground = theme("#000000"),
+                      update_interval = 0.1
                        ),
              widget.Sep(
                        linewidth = 0,
